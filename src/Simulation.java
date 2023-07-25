@@ -3,7 +3,7 @@ public class Simulation {
     private int counter;
     private int length;
     private int height;
-    private MyRenderer renderer;
+    private MapConsoleRender renderer;
 
     public Simulation() {
     }

@@ -1,5 +1,5 @@
-public class MyRenderer {
-    public void render(int length, int height, ){
+public class MapConsoleRender {
+    public void render(int length, int height ){
         for (int i = 0; i < height; i++) {
             String string = "";
             for (int j = 0; j < length; j++) {

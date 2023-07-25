@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("🦁");
+        System.out.println("");
         System.out.println("Type 'start' or 'exit'");
         Scanner scanner = new Scanner(System.in);
         String command = "";
