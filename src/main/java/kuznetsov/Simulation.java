@@ -1,35 +1,58 @@
 package main.java.kuznetsov;
 
+import main.java.kuznetsov.actions.Action;
 import main.java.kuznetsov.entity.*;
 
-
+import java.util.Scanner;
 
 public class Simulation {
-    private static Map map;
-    private static int counter;
-    private static int length;
-    private static int height;
-    private static MapConsoleRender renderer;
+    static final Action[] initActions = new Action[]{
 
-    public Simulation(int length, int height) {
-        this.length = length;
-        this.height = height;
-    }
+    };
+    static final Action[] turnActions = new Action[]{
 
-    public void nextTurn(){
-    }
-    public void start() {
-        map = new Map();
-        renderer = new MapConsoleRender();
+    };
+    static Map map;
+    static int counter;
+    static int length;
+    static int height;
+    static MapConsoleRender renderer;
+    public static void main(String[] args) {
+        height = 10;
+        length = 10;
         counter = 0;
-        map.put(new Coordinates(0,0), new Herbivore());
-        map.put(new Coordinates(2,9), new Grass());
-        map.put(new Coordinates(6,2), new Predator());
-        map.put(new Coordinates(3,9), new Rock());
-        map.put(new Coordinates(7,6), new Tree());
+        System.out.println("Main menu \n" +
+                "Type\n" +
+                        "'start'\n" +
+                        "'exit'");
+        Scanner scanner = new Scanner(System.in);
 
-        MapConsoleRender.render(length, height, map);
-    }
-    public void pause(){
+        while (true){
+            String command = "";
+            command = scanner.nextLine();
+            switch(command) {
+                case ("start"):
+                    System.out.println("Ok, let's go");
+                    map = new Map();
+                    renderer = new MapConsoleRender();
+                    counter = 0;
+                    map.put(new Coordinates(0,0), new Herbivore());
+                    map.put(new Coordinates(2,9), new Grass());
+                    map.put(new Coordinates(6,2), new Predator());
+                    map.put(new Coordinates(3,9), new Rock());
+                    map.put(new Coordinates(7,6), new Tree());
+
+                    MapConsoleRender.render(length, height, map);
+                    break;
+                case ("exit"):
+                    System.out.println("Bye!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Don't know this command");
+            }
+        }
+
+
     }
 }

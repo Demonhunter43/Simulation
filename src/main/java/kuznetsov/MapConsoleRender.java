@@ -13,7 +13,7 @@ public class MapConsoleRender {
                     stringOut = stringOut + map.getEntityByCoordinates(new Coordinates(j,i)).getImage();
                     continue;
                 }
-                stringOut = stringOut + " ";
+                stringOut = stringOut + "  ";
             }
             stringOut = stringOut + "\n";
         }
