@@ -1,4 +1,4 @@
-package actions;
+package main.java.kuznetsov.actions;
 
 import java.util.ArrayList;
 
