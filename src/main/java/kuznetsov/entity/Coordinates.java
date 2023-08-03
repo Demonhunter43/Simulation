@@ -33,4 +33,7 @@ public class Coordinates extends Object{
     public int hashCode() {
         return Objects.hash(x, y);
     }
+    public int getDistanceTo(Coordinates coordinates){
+        return this.x
+    }
 }

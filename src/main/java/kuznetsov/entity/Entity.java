@@ -7,4 +7,14 @@ public abstract class Entity {
     public String getImage() {
         return image;
     }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public ge
 }

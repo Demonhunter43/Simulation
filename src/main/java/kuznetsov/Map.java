@@ -8,9 +8,12 @@ import java.util.HashMap;
 
 public class Map {
     public HashMap<Coordinates, Entity> map;
+    public int height, length;
 
-    public Map (){
+    public Map (int height, int length){
         map = new HashMap<Coordinates, Entity>();
+        this.height = height;
+        this.length = length;
     }
 
     public void put(Coordinates coordinates, Entity entity){

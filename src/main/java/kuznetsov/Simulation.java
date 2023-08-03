@@ -14,31 +14,10 @@ public class Simulation {
     };
     static Map map;
     static int counter;
-    static int length;
-    static int height;
     static MapConsoleRender renderer;
 
     public static void main(String[] args) {
-        System.out.println("Main menu \n" +
-                "Type 'start' or 'exit'");
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            String command = "";
-            command = scanner.nextLine();
-            switch (command) {
-                case ("start"):
-                    System.out.println("Ok, let's go");
-                    startSimulation();
-                    break;
-                case ("exit"):
-                    System.out.println("Bye!");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Don't know this command");
-            }
-        }
+        startSimulation();
     }
 
     private static void startSimulation() {
@@ -50,11 +29,11 @@ public class Simulation {
         // while for commands
         while (true) {
             if (command.equals("")){
-                command = scanner.nextLine();
                 System.out.println("1 - to start endless simulation\n" +
                         "2 - to make one iteration\n" +
                         "3 - to pause\n" +
                         "4 - to exit");
+                command = scanner.nextLine();
             }
             switch (command) {
                 case ("1"):
@@ -80,24 +59,24 @@ public class Simulation {
                     System.exit(0);
                 default:
                     System.out.println("Don't know this command");
+                    command = "";
             }
         }
     }
 
     private static void initializeSimulation() {
         // init actions
-        height = 10;
-        length = 10;
+        int height = 10;
+        int length = 10;
         counter = 0;
-        map = new Map();
+        map = new Map(height, length);
         renderer = new MapConsoleRender();
-        map.put(new Coordinates(0, 0), new Herbivore());
-        map.put(new Coordinates(2, 9), new Grass());
-        map.put(new Coordinates(6, 2), new Predator());
-        map.put(new Coordinates(3, 9), new Rock());
-        map.put(new Coordinates(7, 6), new Tree());
-
-        MapConsoleRender.render(length, height, map);
+        map.put(new Coordinates(0, 0), new Herbivore(new Coordinates(0, 0)));
+        map.put(new Coordinates(2, 9), new Grass(new Coordinates(2, 9)));
+        map.put(new Coordinates(6, 2), new Predator(new Coordinates(6, 2)));
+        map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
+        map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
+        MapConsoleRender.render(map);
     }
 
     private static String startEndlessSimulation() {
