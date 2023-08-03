@@ -2,6 +2,8 @@ package main.java.kuznetsov;
 
 import main.java.kuznetsov.entity.Coordinates;
 import main.java.kuznetsov.entity.Entity;
+import main.java.kuznetsov.entity.Herbivore;
+
 import java.util.HashMap;
 
 public class Map {
@@ -16,5 +18,8 @@ public class Map {
     }
     public Entity getEntityByCoordinates(Coordinates coordinates){
         return map.get(coordinates);
+    }
+    public boolean containsValue(Herbivore herbivore){
+        return map.containsValue(herbivore);
     }
 }
