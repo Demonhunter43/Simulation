@@ -6,11 +6,11 @@ import main.java.kuznetsov.entity.Herbivore;
 
 import java.util.HashMap;
 
-public class Map {
+public class MapField {
     public HashMap<Coordinates, Entity> map;
     public int height, length;
 
-    public Map (int height, int length){
+    public MapField(int height, int length){
         map = new HashMap<Coordinates, Entity>();
         this.height = height;
         this.length = length;

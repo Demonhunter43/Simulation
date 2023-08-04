@@ -5,7 +5,7 @@ import main.java.kuznetsov.entity.Coordinates;
 public class MapConsoleRender {
 
 
-    public static void render(Map map){
+    public static void render(MapField map){
         String stringOut = "";
         for (int i = 0; i < map.height; i++) {
             for (int j = 0; j < map.length; j++) {

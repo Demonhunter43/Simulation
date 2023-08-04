@@ -12,7 +12,7 @@ public class Simulation {
     static final Action[] turnActions = new Action[]{
 
     };
-    static Map map;
+    static MapField map;
     static int counter;
     static MapConsoleRender renderer;
     static int numberOfHerbivore = 1;
@@ -70,14 +70,18 @@ public class Simulation {
         int height = 10;
         int length = 10;
         counter = 0;
-        map = new Map(height, length);
+        map = new MapField(height, length);
         renderer = new MapConsoleRender();
-        map.put(new Coordinates(0, 0), new Herbivore(new Coordinates(0, 0)));
+        Herbivore herbivore = new Herbivore(new Coordinates(0, 0));
+        Predator predator = new Predator(new Coordinates(6, 2));
+        map.put(new Coordinates(0, 0),herbivore);
         map.put(new Coordinates(2, 9), new Grass(new Coordinates(2, 9)));
-        map.put(new Coordinates(6, 2), new Predator(new Coordinates(6, 2)));
+        map.put(new Coordinates(6, 2), predator);
         map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
         map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
         MapConsoleRender.render(map);
+        PathFinder pathFinder = new PathFinder();
+        System.out.println(pathFinder.findNearestTarget(predator, map));
     }
 
     private static String startEndlessSimulation() {

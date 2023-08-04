@@ -1,5 +1,7 @@
 package main.java.kuznetsov.entity;
 
+import main.java.kuznetsov.MapField;
+
 import java.util.Objects;
 
 public class Coordinates extends Object{
@@ -30,10 +32,22 @@ public class Coordinates extends Object{
     }
 
     @Override
+    public String toString() {
+        return "Coordinates{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(x, y);
     }
     public int getDistanceTo(Coordinates coordinates){
         return (this.x - coordinates.getX()) * (this.x - coordinates.getX()) + (this.y - coordinates.getY()) * (this.y - coordinates.getY());
+    }
+
+    public boolean fitInMap(MapField map) {
+        return this.x < map.length && this.x > -1 && this.y < map.height && this.y > -1;
     }
 }
