@@ -34,6 +34,6 @@ public class Coordinates extends Object{
         return Objects.hash(x, y);
     }
     public int getDistanceTo(Coordinates coordinates){
-        return this.x
+        return (this.x - coordinates.getX()) * (this.x - coordinates.getX()) + (this.y - coordinates.getY()) * (this.y - coordinates.getY());
     }
 }
