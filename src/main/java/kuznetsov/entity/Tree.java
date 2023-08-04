@@ -11,4 +11,7 @@ public class Tree extends Item {
     public String getImage() {
         return image;
     }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 }

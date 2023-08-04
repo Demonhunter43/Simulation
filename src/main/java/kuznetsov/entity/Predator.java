@@ -11,4 +11,10 @@ public class Predator extends Creature {
     public String getImage() {
         return image;
     }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public Predator() {
+    }
 }

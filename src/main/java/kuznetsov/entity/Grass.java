@@ -4,11 +4,17 @@ public class Grass extends Item {
     private Coordinates coordinates;
     static String image = "\uD83C\uDF40";
 
+    public Grass() {
+    }
+
     public Grass(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
 
     public String getImage() {
         return image;
+    }
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 }

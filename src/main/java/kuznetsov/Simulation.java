@@ -15,6 +15,7 @@ public class Simulation {
     static Map map;
     static int counter;
     static MapConsoleRender renderer;
+    static int numberOfHerbivore = 1;
 
     public static void main(String[] args) {
         startSimulation();
@@ -80,7 +81,7 @@ public class Simulation {
     }
 
     private static String startEndlessSimulation() {
-        while (map.containsValue(new Herbivore())){
+        while (numberOfHerbivore > 0){
 
         }
         String command = "";
@@ -88,6 +89,9 @@ public class Simulation {
     }
 
     private static void nextTurn() {
+        if (numberOfHerbivore > 0){
+
+        }
     }
 
     private static void pauseSimulation() {

@@ -15,6 +15,4 @@ public abstract class Entity {
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
-
-    public ge
 }
