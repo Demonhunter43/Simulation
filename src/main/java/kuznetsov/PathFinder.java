@@ -16,7 +16,7 @@ public class PathFinder {
 
     public static Coordinates findPath(Entity entity, MapField map) {
         Coordinates target = findNearestTarget(entity, map);
-        ArrayList<Node> openArray = new ArrayList<Coordinates>();
+        ArrayList<Cell> openArray = new ArrayList<Cell>();
         ArrayList<Coordinates> closedArray = new ArrayList<Coordinates>();
         Coordinates nextCoordinates;
         Coordinates currentCoordinates = entity.getCoordinates();
@@ -44,6 +44,5 @@ public class PathFinder {
         });
         return target;
     }
-
-
+    public static boolean addNeighborsToArray (Coordinates cell, )
 }
