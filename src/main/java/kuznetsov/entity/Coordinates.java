@@ -47,7 +47,10 @@ public class Coordinates extends Object{
         return (this.x - coordinates.getX()) * (this.x - coordinates.getX()) + (this.y - coordinates.getY()) * (this.y - coordinates.getY());
     }
 
-    public boolean fitInMap(MapField map) {
-        return this.x < map.length && this.x > -1 && this.y < map.height && this.y > -1;
+    public boolean fitInMap(int length, int height) {
+        return this.x < length && this.x > -1 && this.y < height && this.y > -1;
+    }
+    public int calculateDistanceTo(Coordinates target){
+        return Math.abs(this.x - target.getX()) + Math.abs(this.y - target.getY());
     }
 }
