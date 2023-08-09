@@ -6,7 +6,7 @@ import main.java.kuznetsov.entity.Grass;
 import main.java.kuznetsov.entity.Herbivore;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class PathFinder {
     public static int minDistance;
@@ -20,17 +20,17 @@ public class PathFinder {
         int length = map.length;
         int height = map.height;
         Coordinates target = findNearestTarget(entity, map);
-        ArrayList<Cell> openArray = new ArrayList<>();
+        HashMap<Coordinates, Cell> openList = new HashMap<>();
         ArrayList<Coordinates> closedArray = new ArrayList<>();
         Cell home = new Cell(entity.getCoordinates(), null, 0, entity.getCoordinates().getDistanceTo(target));
         Cell activeCell = home;
-        if (!addNeighborsToArray(activeCell, openArray, map, target)){
+        if (!addNeighborsToArray(activeCell, openList, map, target)){
             System.out.println("One unit is blocked");
             return new Coordinates(-1,-1);
         }
         while (!activeCell.coordinates.equals(target)){
-            activeCell = findBestCellInArray(openArray);
-            addNeighborsToArray(activeCell, openArray, map, target)
+            activeCell = findBestCellInArray(openList);
+            addNeighborsToArray(activeCell, openList, map, target);
         }
         return nextCoordinates;
 
@@ -53,26 +53,26 @@ public class PathFinder {
         });
         return target;
     }
-    public static boolean addNeighborsToArray (Cell activeCell, ArrayList<Cell> array, MapField map, Coordinates target){
+    public static boolean addNeighborsToArray (Cell activeCell, HashMap<Coordinates, Cell> listMap, MapField map, Coordinates target){
         Coordinates neighbour = new Coordinates(activeCell.coordinates.getX()-1, activeCell.coordinates.getY());
         int counter = 0;
-        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && arrayContainsByCoordinates(neighbour, array)){
-            array.add(new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
+        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX(), activeCell.coordinates.getY()-1);
-        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && arrayContainsByCoordinates(neighbour, array)){
-            array.add(new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
+        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX(), activeCell.coordinates.getY()+1);
-        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && arrayContainsByCoordinates(neighbour, array)){
-            array.add(new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
+        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX()+1, activeCell.coordinates.getY());
-        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && arrayContainsByCoordinates(neighbour, array)){
-            array.add(new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
+        if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell,activeCell.distanceToHome + 1, neighbour.getDistanceTo(target)));
             counter++;
         }
         if (counter > 0) return true;
@@ -80,17 +80,9 @@ public class PathFinder {
             return false;
     }
 
-    private static boolean arrayContainsByCoordinates(Coordinates coordinates, ArrayList<Cell> array) {
-        containsFlag = false;
-        array.forEach((cell) -> {
-            if (cell.coordinates.equals(coordinates)) containsFlag = true;
-        });
-        return containsFlag;
-    }
-
-    public static Cell findBestCellInArray(ArrayList<Cell> array){
+    public static Cell findBestCellInArray(HashMap<Coordinates, Cell> listMap){
         minValue = 2147483647;
-        array.forEach((cell) -> {
+        listMap.forEach((coordinates, cell) -> {
             if ((cell.distanceToHome+cell.distanceToTarget) < minValue){
                 bestCell = cell;
                 minValue = cell.distanceToHome+cell.distanceToTarget;
