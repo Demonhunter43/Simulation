@@ -12,6 +12,7 @@ public class Herbivore extends Creature {
     public String getImage() {
         return image;
     }
+
     public Coordinates getCoordinates() {
         return coordinates;
     }

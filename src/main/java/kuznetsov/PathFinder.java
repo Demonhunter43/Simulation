@@ -5,7 +5,6 @@ import main.java.kuznetsov.entity.Entity;
 import main.java.kuznetsov.entity.Grass;
 import main.java.kuznetsov.entity.Herbivore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PathFinder {
@@ -88,21 +87,37 @@ public class PathFinder {
     public static boolean addNeighborsToList(Cell activeCell, HashMap<Coordinates, Cell> listMap, MapField map, Coordinates target) {
         Coordinates neighbour = new Coordinates(activeCell.coordinates.getX() - 1, activeCell.coordinates.getY());
         int counter = 0;
+        if (neighbour.equals(target)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
+            return true;
+        }
         if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)) {
             listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX(), activeCell.coordinates.getY() - 1);
+        if (neighbour.equals(target)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
+            return true;
+        }
         if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)) {
             listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX(), activeCell.coordinates.getY() + 1);
+        if (neighbour.equals(target)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
+            return true;
+        }
         if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)) {
             listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
             counter++;
         }
         neighbour = new Coordinates(activeCell.coordinates.getX() + 1, activeCell.coordinates.getY());
+        if (neighbour.equals(target)){
+            listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
+            return true;
+        }
         if (neighbour.fitInMap(map.length, map.height) && !map.map.containsKey(neighbour) && !listMap.containsKey(neighbour)) {
             listMap.put(neighbour, new Cell(neighbour, activeCell, activeCell.distanceToHome + 1, neighbour.calculateDistanceTo(target)));
             counter++;

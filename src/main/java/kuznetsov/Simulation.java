@@ -26,10 +26,10 @@ public class Simulation {
 
         Scanner scanner = new Scanner(System.in);
         String command = "";
-        boolean isPaused = false  ;
+        boolean isPaused = false;
         // while for commands
         while (true) {
-            if (command.equals("")){
+            if (command.equals("")) {
                 System.out.println("1 - to start endless simulation\n" +
                         "2 - to make one iteration\n" +
                         "3 - to pause\n" +
@@ -73,19 +73,20 @@ public class Simulation {
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
         Herbivore herbivore = new Herbivore(new Coordinates(0, 0));
-        Predator predator = new Predator(new Coordinates(6, 2));
-        map.put(new Coordinates(0, 0),herbivore);
+        Predator predator = new Predator(new Coordinates(7, 3));
+        map.put(new Coordinates(0, 0), herbivore);
         map.put(new Coordinates(2, 9), new Grass(new Coordinates(2, 9)));
-        map.put(new Coordinates(6, 0), predator);
+        map.put(new Coordinates(7, 3), predator);
         map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
         map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
         MapConsoleRender.render(map);
         PathFinder pathFinder = new PathFinder();
         System.out.println(pathFinder.findPath(predator, map));
+        int a = 5;
     }
 
     private static String startEndlessSimulation() {
-        while (numberOfHerbivore > 0){
+        while (numberOfHerbivore > 0) {
 
         }
         String command = "";
@@ -93,7 +94,7 @@ public class Simulation {
     }
 
     private static void nextTurn() {
-        if (numberOfHerbivore > 0){
+        if (numberOfHerbivore > 0) {
 
         }
     }

@@ -11,6 +11,7 @@ public class Rock extends Item {
     public String getImage() {
         return image;
     }
+
     public Coordinates getCoordinates() {
         return coordinates;
     }

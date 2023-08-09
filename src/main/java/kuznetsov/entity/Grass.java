@@ -14,6 +14,7 @@ public class Grass extends Item {
     public String getImage() {
         return image;
     }
+
     public Coordinates getCoordinates() {
         return coordinates;
     }
