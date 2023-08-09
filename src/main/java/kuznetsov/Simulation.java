@@ -76,12 +76,12 @@ public class Simulation {
         Predator predator = new Predator(new Coordinates(6, 2));
         map.put(new Coordinates(0, 0),herbivore);
         map.put(new Coordinates(2, 9), new Grass(new Coordinates(2, 9)));
-        map.put(new Coordinates(6, 2), predator);
+        map.put(new Coordinates(6, 0), predator);
         map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
         map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
         MapConsoleRender.render(map);
         PathFinder pathFinder = new PathFinder();
-        System.out.println(pathFinder.findNearestTarget(predator, map));
+        System.out.println(pathFinder.findPath(predator, map));
     }
 
     private static String startEndlessSimulation() {
