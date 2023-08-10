@@ -1,17 +1,19 @@
 package main.java.kuznetsov;
 
 import main.java.kuznetsov.actions.Action;
+import main.java.kuznetsov.actions.MoveAllCreatures;
+import main.java.kuznetsov.actions.SpawnEverything;
+import main.java.kuznetsov.actions.attackNeighbours;
 import main.java.kuznetsov.entity.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Simulation {
-    static final Action[] initActions = new Action[]{
 
-    };
-    static final Action[] turnActions = new Action[]{
+    static ArrayList<Action> initActions = new ArrayList<Action>();
+    static ArrayList<Action> turnActions = new ArrayList<Action>();
 
-    };
     static MapField map;
     static int counter;
     static MapConsoleRender renderer;
@@ -22,6 +24,7 @@ public class Simulation {
     }
 
     private static void startSimulation() {
+        initializeActions();
         initializeSimulation();
 
         Scanner scanner = new Scanner(System.in);
@@ -65,10 +68,16 @@ public class Simulation {
         }
     }
 
+    private static void initializeActions() {
+        initActions.add(new SpawnEverything());
+        turnActions.add(new MoveAllCreatures());
+        turnActions.add(new attackNeighbours())
+    }
+
     private static void initializeSimulation() {
         // init actions
-        int height = 10;
-        int length = 10;
+        int height = 20;
+        int length = 15;
         counter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
@@ -80,9 +89,6 @@ public class Simulation {
         map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
         map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
         MapConsoleRender.render(map);
-        PathFinder pathFinder = new PathFinder();
-        System.out.println(pathFinder.findPath(predator, map));
-        int a = 5;
     }
 
     private static String startEndlessSimulation() {
@@ -95,7 +101,9 @@ public class Simulation {
 
     private static void nextTurn() {
         if (numberOfHerbivore > 0) {
+            map.map.forEach((coordinates, cell) -> {
 
+            });
         }
     }
 
