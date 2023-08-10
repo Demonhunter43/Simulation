@@ -1,9 +1,6 @@
 package main.java.kuznetsov;
 
-import main.java.kuznetsov.actions.Action;
-import main.java.kuznetsov.actions.MoveAllCreatures;
-import main.java.kuznetsov.actions.SpawnEverything;
-import main.java.kuznetsov.actions.attackNeighbours;
+import main.java.kuznetsov.actions.*;
 import main.java.kuznetsov.entity.*;
 
 import java.util.ArrayList;
@@ -71,7 +68,9 @@ public class Simulation {
     private static void initializeActions() {
         initActions.add(new SpawnEverything());
         turnActions.add(new MoveAllCreatures());
-        turnActions.add(new attackNeighbours())
+        turnActions.add(new AttackNeighbours());
+        turnActions.add(new SpawnGrass());
+        turnActions.add(new SpawnHerbivore());
     }
 
     private static void initializeSimulation() {
