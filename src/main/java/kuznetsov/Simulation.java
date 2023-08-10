@@ -1,20 +1,19 @@
 package main.java.kuznetsov;
 
 import main.java.kuznetsov.actions.*;
-import main.java.kuznetsov.entity.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Simulation {
 
-    static ArrayList<Action> initActions = new ArrayList<Action>();
-    static ArrayList<Action> turnActions = new ArrayList<Action>();
+    static ArrayList<Action> initActions = new ArrayList<>();
+    static ArrayList<Action> turnActions = new ArrayList<>();
 
     static MapField map;
-    static int counter;
+    static int iterationsCounter;
     static MapConsoleRender renderer;
-    static int numberOfHerbivore = 1;
+    static int numberOfHerbivore = 3;
 
     public static void main(String[] args) {
         startSimulation();
@@ -34,6 +33,8 @@ public class Simulation {
                         "2 - to make one iteration\n" +
                         "3 - to pause\n" +
                         "4 - to exit");
+                System.out.println("Number of herbivores: " + numberOfHerbivore + "/n" +
+                        "Number of iterations: " + iterationsCounter);
                 command = scanner.nextLine();
             }
             switch (command) {
@@ -66,27 +67,23 @@ public class Simulation {
     }
 
     private static void initializeActions() {
-        initActions.add(new SpawnEverything());
-        turnActions.add(new MoveAllCreatures());
-        turnActions.add(new AttackNeighbours());
-        turnActions.add(new SpawnGrass());
-        turnActions.add(new SpawnHerbivore());
+        initActions.add(new SpawnEverything());     //0
+
+        
+        turnActions.add(new MoveAllCreatures());    //0
+        turnActions.add(new AttackAllNeighbours()); //1
+        turnActions.add(new SpawnGrass());          //2
+        turnActions.add(new SpawnHerbivore());      //3
     }
 
     private static void initializeSimulation() {
         // init actions
         int height = 20;
         int length = 15;
-        counter = 0;
+        iterationsCounter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
-        Herbivore herbivore = new Herbivore(new Coordinates(0, 0));
-        Predator predator = new Predator(new Coordinates(7, 3));
-        map.put(new Coordinates(0, 0), herbivore);
-        map.put(new Coordinates(2, 9), new Grass(new Coordinates(2, 9)));
-        map.put(new Coordinates(7, 3), predator);
-        map.put(new Coordinates(3, 9), new Rock(new Coordinates(3, 9)));
-        map.put(new Coordinates(7, 6), new Tree(new Coordinates(7, 6)));
+        initActions.get(0).doAction(map, numberOfHerbivore, 1, 3, 4);
         MapConsoleRender.render(map);
     }
 
@@ -100,9 +97,12 @@ public class Simulation {
 
     private static void nextTurn() {
         if (numberOfHerbivore > 0) {
-            map.map.forEach((coordinates, cell) -> {
-
-            });
+            turnActions.get(0).doAction(map);
+            turnActions.get(1).doAction(map);
+            iterationsCounter++;
+        } else {
+            System.out.println("Травоядные закончились, пока!");
+            System.exit(0);
         }
     }
 

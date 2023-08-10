@@ -19,7 +19,7 @@ public class MapConsoleRender {
             stringOut.append("\uD83D\uDFEA\n\uD83D\uDFEA");
         }
         stringOut.append(makeHorizontalLaneByLength(map.length-1));
-        System.out.println(stringOut);
+        System.out.print(stringOut);
     }
 
     private static StringBuilder makeHorizontalLaneByLength(int length) {
