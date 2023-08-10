@@ -14,7 +14,7 @@ public class PathFinder {
     public static Cell bestCell;
 
 
-    public static Coordinates findPath(Entity entity, MapField map) {
+    public static Coordinates findNextCell(Entity entity, MapField map) {
         Coordinates nextCoordinates;
         Coordinates target = findNearestTarget(entity, map);
         HashMap<Coordinates, Cell> openList = new HashMap<>();
@@ -69,7 +69,7 @@ public class PathFinder {
     public static Coordinates findNearestTarget(Entity entity, MapField map) {
         minDistance = 2147483647;
         map.map.forEach((coordinates, entityLambda) -> {
-            if (entity.getClass() == (new Herbivore()).getClass()) { //grass
+            if (entity.getClass() == Herbivore.class) { //grass
                 if ((entity.getCoordinates().getDistanceTo(coordinates) != 0) && (entity.getCoordinates().getDistanceTo(coordinates) < minDistance) && (entityLambda.getClass() == (new Grass()).getClass())) {
                     minDistance = entity.getCoordinates().getDistanceTo(coordinates);
                     target = coordinates;
