@@ -13,38 +13,54 @@ public class AttackAllNeighbours extends Action {
         map.map.forEach((coordinates, entity) -> {
             if (entity.getClass() == Herbivore.class) {
                 coordinatesToCheck = new Coordinates(coordinates.getX() + 1, coordinates.getY());
-                if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX() - 1, coordinates.getY());
-                if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() + 1);
-                if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() - 1);
-                if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
             }
             if (entity.getClass() == Predator.class) {
                 coordinatesToCheck = new Coordinates(coordinates.getX() + 1, coordinates.getY());
-                if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX() - 1, coordinates.getY());
-                if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() + 1);
-                if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() - 1);
-                if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
-                    map.map.remove(coordinatesToCheck);
+                if (map.map.containsKey(coordinatesToCheck)) {
+                    if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
+                        map.map.remove(coordinatesToCheck);
+                    }
                 }
             }
         });

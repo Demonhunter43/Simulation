@@ -33,8 +33,7 @@ public class Simulation {
                         "2 - to make one iteration\n" +
                         "3 - to pause\n" +
                         "4 - to exit");
-                System.out.println("Number of herbivores: " + numberOfHerbivore + "/n" +
-                        "Number of iterations: " + iterationsCounter);
+                System.out.println("Number of herbivores: " + numberOfHerbivore + ", number of iterations: " + iterationsCounter);
                 command = scanner.nextLine();
             }
             switch (command) {
@@ -78,12 +77,12 @@ public class Simulation {
 
     private static void initializeSimulation() {
         // init actions
-        int height = 20;
-        int length = 15;
+        int height = 10;
+        int length = 20;
         iterationsCounter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
-        initActions.get(0).doAction(map, numberOfHerbivore, 1, 3, 4);
+        initActions.get(0).doAction(map, numberOfHerbivore, 1, 1, 2);
         MapConsoleRender.render(map);
     }
 
@@ -97,11 +96,11 @@ public class Simulation {
 
     private static void nextTurn() {
         if (numberOfHerbivore > 0) {
-            turnActions.get(0).doAction(map);
             turnActions.get(1).doAction(map);
+            turnActions.get(0).doAction(map);
             iterationsCounter++;
         } else {
-            System.out.println("Травоядные закончились, пока!");
+            System.out.println("No more herbivores, bye!");
             System.exit(0);
         }
     }
