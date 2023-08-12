@@ -14,6 +14,7 @@ public class Simulation {
     static int iterationsCounter;
     static MapConsoleRender renderer;
     static int numberOfHerbivore = 3;
+    public static String command = "";
 
     public static void main(String[] args) {
         startSimulation();
@@ -24,7 +25,6 @@ public class Simulation {
         initializeSimulation();
 
         Scanner scanner = new Scanner(System.in);
-        String command = "";
         boolean isPaused = false;
         // while for commands
         while (true) {
@@ -99,10 +99,12 @@ public class Simulation {
             turnActions.get(1).doAction(map);
             turnActions.get(0).doAction(map);
             iterationsCounter++;
+            MapConsoleRender.render(map);
         } else {
             System.out.println("No more herbivores, bye!");
             System.exit(0);
         }
+        command = "";
     }
 
     private static void pauseSimulation() {
