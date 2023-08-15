@@ -13,7 +13,7 @@ public class Simulation {
     static MapField map;
     static int iterationsCounter;
     static MapConsoleRender renderer;
-    static int numberOfHerbivore = 3;
+    static int numberOfHerbivore = 2;
     public static String command = "";
 
     public static void main(String[] args) {
@@ -48,8 +48,7 @@ public class Simulation {
                     break;
                 case ("3"):
                     if (!isPaused) {
-                        pauseSimulation();
-                        isPaused = true;
+                        isPaused = pauseSimulation();
                         command = "";
                     } else {
                         System.out.println("The game is already paused");
@@ -77,8 +76,8 @@ public class Simulation {
 
     private static void initializeSimulation() {
         // init actions
-        int height = 10;
-        int length = 20;
+        int height = 5;
+        int length = 7;
         iterationsCounter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
@@ -109,7 +108,8 @@ public class Simulation {
         command = "";
     }
 
-    private static void pauseSimulation() {
+    private static boolean pauseSimulation() {
         System.out.println("The game is paused!");
+        return true;
     }
 }

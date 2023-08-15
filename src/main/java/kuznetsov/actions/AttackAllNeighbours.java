@@ -17,28 +17,28 @@ public class AttackAllNeighbours extends Action {
             attackFlag = false;
             if (entity.getClass() == Herbivore.class) {
                 coordinatesToCheck = new Coordinates(coordinates.getX() + 1, coordinates.getY());
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
                         map.map.remove(coordinatesToCheck);
                         attackFlag = true;
                     }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX() - 1, coordinates.getY());
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
                         map.map.remove(coordinatesToCheck);
                         attackFlag = true;
                     }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() + 1);
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
                         map.map.remove(coordinatesToCheck);
                         attackFlag = true;
                     }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX(), coordinates.getY() - 1);
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Grass.class) {
                         map.map.remove(coordinatesToCheck);
                         attackFlag = true;
@@ -47,7 +47,7 @@ public class AttackAllNeighbours extends Action {
             }
             if (entity.getClass() == Predator.class) {
                 coordinatesToCheck = new Coordinates(coordinates.getX() + 1, coordinates.getY());
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
                         map.map.remove(coordinatesToCheck);
                         herbivoreDeathCounter++;
@@ -55,7 +55,7 @@ public class AttackAllNeighbours extends Action {
                     }
                 }
                 coordinatesToCheck = new Coordinates(coordinates.getX() - 1, coordinates.getY());
-                if (map.map.containsKey(coordinatesToCheck)&& !attackFlag) {
+                if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
                     if (map.map.get(coordinatesToCheck).getClass() == Herbivore.class) {
                         map.map.remove(coordinatesToCheck);
                         herbivoreDeathCounter++;
@@ -80,6 +80,6 @@ public class AttackAllNeighbours extends Action {
                 }
             }
         });
-    return herbivoreDeathCounter;
+        return herbivoreDeathCounter;
     }
 }
