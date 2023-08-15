@@ -44,13 +44,10 @@ public class Coordinates extends Object{
         return Objects.hash(x, y);
     }
     public int getDistanceTo(Coordinates coordinates){
-        return (this.x - coordinates.getX()) * (this.x - coordinates.getX()) + (this.y - coordinates.getY()) * (this.y - coordinates.getY());
+        return Math.abs((this.x - coordinates.getX())) + Math.abs(this.y - coordinates.getY());
     }
 
-    public boolean fitInMap(int length, int height) {
-        return this.x < length && this.x > -1 && this.y < height && this.y > -1;
-    }
-    public int calculateDistanceTo(Coordinates target){
-        return Math.abs(this.x - target.getX()) + Math.abs(this.y - target.getY());
+    public boolean fitInMap(MapField map) {
+        return this.x < map.length && this.x > -1 && this.y < map.height && this.y > -1;
     }
 }
