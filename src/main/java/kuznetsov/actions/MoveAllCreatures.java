@@ -19,7 +19,7 @@ public class MoveAllCreatures extends Action {
             Entity entity = map.getEntityByCoordinates((Coordinates) currentCoordinates);
             if ((entity.getClass() == Herbivore.class) || ((entity.getClass() == Predator.class))) {
                 pathFinder = new PathFinder();
-                Coordinates nextCoordinates = pathFinder.findNextCell(entity, map);
+                Coordinates nextCoordinates = pathFinder.findNextCoordinates(entity, map);
                 mover.move(map, entity, nextCoordinates);
             }
         }

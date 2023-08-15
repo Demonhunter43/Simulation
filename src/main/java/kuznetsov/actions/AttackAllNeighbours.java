@@ -21,7 +21,12 @@ public class AttackAllNeighbours extends Action {
         herbivoreDeathCounter = 0;
         boolean attackFlag = false;
         Coordinates coordinatesToCheck;
-        Entity entity = map.getEntityByCoordinates(currentCoordinates);
+        Entity entity;
+        if (map.map.containsKey(currentCoordinates)) {
+            entity = map.getEntityByCoordinates(currentCoordinates);
+        } else {
+            entity = new Grass();
+        }
         if (entity.getClass() == Herbivore.class) {
             coordinatesToCheck = new Coordinates(currentCoordinates.getX(), currentCoordinates.getY() + 1);
             if (map.map.containsKey(coordinatesToCheck) && !attackFlag) {
