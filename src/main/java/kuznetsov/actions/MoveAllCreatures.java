@@ -12,7 +12,7 @@ import java.util.Set;
 public class MoveAllCreatures extends Action{
     private PathFinder pathFinder;
     private MoveOneCreature mover;
-    public void doAction(MapField map){
+    public int doAction(MapField map){
         Set setOfCoordinates = map.map.keySet();
         for (Object currentCoordinates: setOfCoordinates){
             Entity entity = map.getEntityByCoordinates((Coordinates) currentCoordinates);
@@ -22,5 +22,6 @@ public class MoveAllCreatures extends Action{
                 mover.move(map, entity, nextCoordinates);
             }
         }
+        return 1;
     }
 }

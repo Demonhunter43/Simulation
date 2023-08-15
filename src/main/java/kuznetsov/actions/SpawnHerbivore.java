@@ -4,7 +4,7 @@ import main.java.kuznetsov.MapField;
 
 public class SpawnHerbivore extends Action {
 
-    public void doAction(MapField map) {
-
+    public int doAction(MapField map) {
+        return 1;
     }
 }

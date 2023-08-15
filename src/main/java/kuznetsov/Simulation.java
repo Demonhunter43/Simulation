@@ -68,7 +68,7 @@ public class Simulation {
     private static void initializeActions() {
         initActions.add(new SpawnEverything());     //0
 
-        
+
         turnActions.add(new MoveAllCreatures());    //0
         turnActions.add(new AttackAllNeighbours()); //1
         turnActions.add(new SpawnGrass());          //2
@@ -88,6 +88,7 @@ public class Simulation {
 
     private static String startEndlessSimulation() {
         while (numberOfHerbivore > 0) {
+            nextTurn();
 
         }
         String command = "";
@@ -96,7 +97,8 @@ public class Simulation {
 
     private static void nextTurn() {
         if (numberOfHerbivore > 0) {
-            turnActions.get(1).doAction(map);
+            int deaths = turnActions.get(1).doAction(map);
+            numberOfHerbivore = numberOfHerbivore - deaths;
             turnActions.get(0).doAction(map);
             iterationsCounter++;
             MapConsoleRender.render(map);
