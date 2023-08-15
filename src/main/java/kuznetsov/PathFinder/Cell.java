@@ -1,14 +1,16 @@
-package main.java.kuznetsov;
+package main.java.kuznetsov.PathFinder;
 
 import main.java.kuznetsov.entity.Coordinates;
 
-public class Cell {
+import java.util.Comparator;
+
+public class Cell implements Comparable<Cell>{
     public Coordinates coordinates;
     public Cell home;
     public int distanceToHome, distanceToTarget;
     private int cost;
 
-    public Cell(Coordinates coordinates, Cell home, int distanceToHome, int distanceToTarget, int cost) {
+    public Cell(Coordinates coordinates, int distanceToHome, int distanceToTarget, int cost,  Cell home) {
         this.coordinates = coordinates;
         this.home = home;
         this.distanceToHome = distanceToHome;
@@ -34,5 +36,10 @@ public class Cell {
     }
     public void setCost(){
         this.cost = distanceToHome + distanceToTarget;
+    }
+
+    @Override
+    public int compareTo(Cell o) {
+        return o.cost > this.cost ? 1 : -1;
     }
 }

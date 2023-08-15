@@ -1,7 +1,7 @@
 package main.java.kuznetsov.actions;
 
 import main.java.kuznetsov.MapField;
-import main.java.kuznetsov.PathFinder;
+import main.java.kuznetsov.PathFinder.PathFinder;
 import main.java.kuznetsov.entity.Coordinates;
 import main.java.kuznetsov.entity.Entity;
 import main.java.kuznetsov.entity.Herbivore;

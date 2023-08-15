@@ -1,11 +1,13 @@
-package main.java.kuznetsov;
+package main.java.kuznetsov.PathFinder;
 
+import main.java.kuznetsov.MapField;
 import main.java.kuznetsov.entity.Coordinates;
 import main.java.kuznetsov.entity.Entity;
 import main.java.kuznetsov.entity.Grass;
 import main.java.kuznetsov.entity.Herbivore;
 
-import java.util.HashMap;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class PathFinder {
     public static int minDistance;
@@ -15,8 +17,9 @@ public class PathFinder {
 
 
     public static Coordinates findNextCoordinates(Entity entity, MapField map) {
-        Coordinates nextCoordinates;
-        Coordinates target = findNearestTarget(entity, map);
+        Cell startCell = new Cell(entity.getCoordinates(), 0, 0, 0, null);
+        Cell endCell = new Cell(findNearestTarget(entity, map), 0, 0, 0, null);
+        PriorityQueue<Cell> openList = new PriorityQueue<Cell>(Comparator<E> c);
         return nextCoordinates;
     }
 
