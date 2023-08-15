@@ -33,7 +33,7 @@ public class Simulation {
                         "2 - to make one iteration\n" +
                         "3 - to pause\n" +
                         "4 - to exit");
-                System.out.println("Number of herbivores: " + numberOfHerbivore + ", number of iterations: " + iterationsCounter);
+                System.out.println("Number of herbivores: " + numberOfHerbivore + ", iteration: " + iterationsCounter);
                 command = scanner.nextLine();
             }
             switch (command) {
