@@ -16,8 +16,12 @@ public class PathFinder {
 
 
     public static Coordinates findNextCoordinates(Entity entity, MapField map) {
-        Cell startCell = new Cell(entity.getCoordinates(), 0, 0, 0, new Cell());
+        Cell startCell = new Cell(entity.getCoordinates(), 0, 0, 0, null);
         Coordinates target = findNearestTarget(entity, map);
+        if (entity.getCoordinates().getDistanceTo(target) == 1) {
+            return entity.getCoordinates();
+
+        }
         PriorityQueue<Cell> openList = new PriorityQueue<>();
         openList.add(startCell);
 
@@ -25,7 +29,7 @@ public class PathFinder {
         Cell currentCell;
         while (!openList.isEmpty()) {
             currentCell = openList.peek();
-            if (currentCell.coordinates.getDistanceTo(target) == 1) { // neighbour to target
+            if (currentCell.distanceToTarget == 1) { // problem is here
                 while (!currentCell.home.equals(startCell)) {
                     currentCell = currentCell.home;
                 }
@@ -33,7 +37,7 @@ public class PathFinder {
             }
             closedList.put(currentCell.coordinates, currentCell);
             ArrayList<Cell> neighbours = addNeighboursToArrayList(currentCell, map);
-            int newDistanceToHome = 0;
+            int newDistanceToHome;
             for (Cell neighbour :
                     neighbours) {
                 if (closedList.containsKey(neighbour.coordinates)) {

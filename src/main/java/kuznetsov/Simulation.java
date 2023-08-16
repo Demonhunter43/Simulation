@@ -13,7 +13,7 @@ public class Simulation {
     static MapField map;
     static int iterationsCounter;
     static MapConsoleRender renderer;
-    static int numberOfHerbivore = 2;
+    static int numberOfHerbivore = 3;
     public static String command = "";
 
     public static void main(String[] args) {
@@ -76,8 +76,8 @@ public class Simulation {
 
     private static void initializeSimulation() {
         // init actions
-        int length = 15;
-        int height = 10;
+        int length = 10;
+        int height = 5;
         iterationsCounter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();
