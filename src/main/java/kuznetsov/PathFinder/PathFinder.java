@@ -16,8 +16,7 @@ public class PathFinder {
 
 
     public static Coordinates findNextCoordinates(Entity entity, MapField map) {
-        Cell startCell = new Cell(entity.getCoordinates(), 0, 0, 0, null);
-        Cell endCell = new Cell(findNearestTarget(entity, map), 0, 0, 0, null);
+        Cell startCell = new Cell(entity.getCoordinates(), 0, 0, 0, new Cell());
 
         PriorityQueue<Cell> openList = new PriorityQueue<>();
         openList.add(startCell);

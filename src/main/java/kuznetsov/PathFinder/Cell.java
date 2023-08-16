@@ -2,18 +2,21 @@ package main.java.kuznetsov.PathFinder;
 
 import main.java.kuznetsov.entity.Coordinates;
 
-public class Cell implements Comparable<Cell>{
+public class Cell implements Comparable<Cell> {
     public Coordinates coordinates;
     public Cell home;
     public int distanceToHome, distanceToTarget;
     private int cost;
 
-    public Cell(Coordinates coordinates, int distanceToHome, int distanceToTarget, int cost,  Cell home) {
+    public Cell(Coordinates coordinates, int distanceToHome, int distanceToTarget, int cost, Cell home) {
         this.coordinates = coordinates;
         this.home = home;
         this.distanceToHome = distanceToHome;
         this.distanceToTarget = distanceToTarget;
         this.cost = distanceToHome + distanceToTarget;
+    }
+
+    public Cell() {
     }
 
     @Override
@@ -29,10 +32,11 @@ public class Cell implements Comparable<Cell>{
         return coordinates == that.coordinates;
     }
 
-    public int getCost(){
+    public int getCost() {
         return cost;
     }
-    public void setCost(int cost){
+
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
