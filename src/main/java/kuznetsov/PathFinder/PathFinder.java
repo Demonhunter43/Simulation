@@ -26,8 +26,8 @@ public class PathFinder {
         Cell currentCell;
         while (!openList.isEmpty()) {
             currentCell = openList.peek();
-            if (currentCell.equals(endCell)) {
-                while (currentCell.home.equals(startCell)) {
+            if (currentCell.coordinates.getDistanceTo(target) == 1) { // neighbour to target
+                while (!currentCell.home.equals(startCell)) {
                     currentCell = currentCell.home;
                 }
                 return currentCell.coordinates;
@@ -56,6 +56,7 @@ public class PathFinder {
                     neighbour.setCost(neighbour.distanceToHome + neighbour.distanceToTarget);
                     neighbour.home = currentCell;
                     openList.add(neighbour);
+                    openList.remove(currentCell);
                 }
             }
         }

@@ -19,4 +19,8 @@ public class Herbivore extends Creature {
 
     public Herbivore() {
     }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
 }

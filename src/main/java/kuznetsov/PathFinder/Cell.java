@@ -38,6 +38,6 @@ public class Cell implements Comparable<Cell>{
 
     @Override
     public int compareTo(Cell o) {
-        return o.cost > this.cost ? 1 : -1;
+        return o.cost < this.cost ? 1 : -1;
     }
 }
