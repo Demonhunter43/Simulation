@@ -22,7 +22,8 @@ public class PathFinder {
             return entity.getCoordinates();
 
         }
-        PriorityQueue<Cell> openList = new PriorityQueue<>();
+        CellCostComparator comparator =  new CellCostComparator();
+        PriorityQueue<Cell> openList = new PriorityQueue<>(comparator);
         openList.add(startCell);
 
         HashMap<Coordinates, Cell> closedList = new HashMap<>();
