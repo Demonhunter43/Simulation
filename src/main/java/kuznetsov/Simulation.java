@@ -76,8 +76,8 @@ public class Simulation {
 
     private static void initializeSimulation() {
         // init actions
-        int length = 10;
-        int height = 5;
+        int length = 20;
+        int height = 10;
         iterationsCounter = 0;
         map = new MapField(height, length);
         renderer = new MapConsoleRender();

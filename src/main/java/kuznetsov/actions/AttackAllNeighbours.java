@@ -18,7 +18,6 @@ public class AttackAllNeighbours extends Action {
     }
 
     private void AttackNeighbours(MapField map, Coordinates currentCoordinates) {
-        herbivoreDeathCounter = 0;
         boolean attackFlag = false;
         Coordinates coordinatesToCheck;
         Entity entity;
